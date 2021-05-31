@@ -58,7 +58,7 @@ class DQN:
         self._loss = tf.reduce_mean(tf.square(self._Y - self._Qpred))
 
         # Training
-        self._train = tf.train.MomentumOptimizer(momentum=0.9, learning_rate = self.learning_rate).minimize(self._loss)
+        self._train = tf.train.AdamOptimizer(learning_rate = self.learning_rate).minimize(self._loss)
 
     def predict(self, state):
         x = np.reshape(state, [1, self.input_size])
@@ -105,28 +105,27 @@ def test(mainDQN, trained_episodes):
     env.s = state
     for step in range(100):
         impossible_actions = env.impossible_actions()
-        '''
-        e = 1. / ((trained_episodes /25000) + 1)
+
+        e = 1. / ((trained_episodes /50000) + 1)
         if np.random.rand(1) < e:
             while True:
                 action = np.random.randint(0, num_stack * (num_stack - 1))
                 if action not in impossible_actions:
                     break
         else:
-        '''
-        q_list = mainDQN.predict(state)
-        for idx in impossible_actions:
-            q_list[0][idx] = 0
-        action = np.argmax(q_list)
+            q_list = mainDQN.predict(state)
+            for idx in impossible_actions:
+                q_list[0][idx] = 0
+            action = np.argmax(q_list)
 
 
         next_state, reward, done = env.step(action)
         state_history.append(next_state)
-
+        '''
         if done:
             helper.print_gif(trained_episodes, max_stack, num_stack, state_history)
             break
-
+        '''
         env.s = next_state
         state = next_state
     if done:
@@ -195,19 +194,14 @@ def main():
                     successList.append(1)
                     break
 
-                replay_buffer.append((state, action, reward, next_state, done))
-                if len(replay_buffer) > REPLAY_MEMORY:
-                    replay_buffer.popleft()
-
                 state = next_state
                 step += 1
-
 
             if not done:
                 successList.append(0)
                 step_list.append(maximum_step)
 
-            if episode == 50000: # learning rate is schedule
+            if episode == 25000 or episode == 50000: # learning rate is schedule
                 lr *= 0.1
 
             if episode % 20 == 0: # train every 20 episodes
@@ -217,7 +211,6 @@ def main():
                 sess.run(copy_ops)
 
             if episode % 500 == 0:
-                print(f'lr: {lr}')
                 '''
                 if done:
                     helper.print_gif(episode, max_stack, num_stack, state_history)
