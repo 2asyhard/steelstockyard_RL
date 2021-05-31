@@ -48,8 +48,8 @@
 </br></br>
 ### Reward
 
-1. The agent receive reward when it reaches the terminal state within a set number of actions
-2. The agent receive penalty when the terminal state is not reached within a set number of actions
+- The agent receive reward when it reaches the terminal state within a set number of actions
+
 </br></br>
 
 
