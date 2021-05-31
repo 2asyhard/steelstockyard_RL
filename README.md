@@ -13,11 +13,12 @@
    - In this Code, Reinforcement Learning is applied to reshuffling operations
 5. Release steel plate
 
-![Image Caption](./markdown%20images/reshuffle%20summary.png)
+![Reshuffle summary](https://user-images.githubusercontent.com/43307537/120211724-3700fc00-c26c-11eb-8a39-910c029a4247.png)
 </br></br>
 ### DQN(Deep Q-Network) is applied to steel stockyard reshuffling problem
 
-![Image Caption](./markdown%20images/RL%20reshuffling.png)
+![RL reshuffling](https://user-images.githubusercontent.com/43307537/120211837-5009ad00-c26c-11eb-8dff-104aaec46d75.png)
+
 </br></br>
 
 ### State
@@ -27,13 +28,13 @@
    - No priority with same release order
       - in case of release number 1, any one of 3 steels can be taken out first
 
-![Image Caption](./markdown%20images/state%20sample.png)
+![state sample](https://user-images.githubusercontent.com/43307537/120211893-5b5cd880-c26c-11eb-9d5c-4d691d1904eb.png)
 </br></br>
 ### Terminal state
 
 1. If release order in each stack is descending order from the top, than it's considered as terminal state
 2. Various terminal state is possible as shown below
-![](./markdown%20images/terminal%20state%20sample.png)
+![terminal state sample](https://user-images.githubusercontent.com/43307537/120211943-644daa00-c26c-11eb-9b0e-53dabe1963b3.png)
 </br></br>
 ### Action
 1. Action is moving steel from one stack to another
@@ -43,7 +44,7 @@
 3. Solution
    1. The solution in steel reshuffling is reshuffling process
    2. Among solutions, the process of reshuffling by the minimum number of actions becomes optimal solution
-![Image Caption](./markdown%20images/episode%20sample.png)
+![episode sample](https://user-images.githubusercontent.com/43307537/120211975-6b74b800-c26c-11eb-8d97-207176585920.png)
 </br></br>
 ### Reward
 
