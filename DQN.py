@@ -35,13 +35,20 @@ class DQN:
             self.conv1 = slim.conv2d( \
                 inputs=self.imageIn, num_outputs=h_size, kernel_size=[1, 1], stride=[1, 1], padding='SAME',
                 biases_initializer=None)
+            self.conv1 = tf.layers.batch_normalization(inputs=self.conv1)
+            self.conv1 = tf.nn.relu(self.conv1)
+
             self.conv2 = slim.conv2d( \
                 inputs=self.conv1, num_outputs=h_size, kernel_size=[2, 2], stride=[1, 1], padding='SAME',
                 biases_initializer=None)
+            self.conv2 = tf.layers.batch_normalization(inputs=self.conv2)
+            self.conv2 = tf.nn.relu(self.conv2)
 
             self.conv3 = slim.conv2d( \
                 inputs=self.conv2, num_outputs=h_size, kernel_size=[2, 2], stride=[1, 1], padding='SAME',
                 biases_initializer=None)
+            self.conv3 = tf.layers.batch_normalization(inputs=self.conv3)
+            self.conv3 = tf.nn.relu(self.conv3)
 
             self.flat_1 = slim.flatten(self.conv3)
             xavier_init = tf.contrib.layers.xavier_initializer()
