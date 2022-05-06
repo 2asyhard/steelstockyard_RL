@@ -89,12 +89,12 @@
 |4|5|6|
 <br/>
 
-- When the total number of states increases, the proportion of terminal states decreases
+1. When the total number of states increases, the proportion of terminal states decreases
 
-- Therefore, it is expected that the ratio of terminal states will be very small in an environment where the total number of states is larger
+2. Therefore, it is expected that the ratio of terminal states will be very small in an environment where the total number of states is larger
 
-- For this reason, a sparse reward problem arises in which rewards are not received in a complex environment
+3. For this reason, a sparse reward problem arises in which rewards are not received in a complex environment
 
-
+* Check out `get environment info` folder
 
 
