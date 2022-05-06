@@ -59,10 +59,41 @@
 
 </br></br>
 
+---
 
+## Problem with applying Reinforcement Learning
 
+### Sparse reward
+- Terminal states ratio gets smaller when total number of states increases
 
+|Total number of states|Terminal states ratio|
+|----------------------|---------------------|
+|200|0.275|
+|900|0.147|
+|1800|0.115|
+|3600|0.09|
+|7200|0.071|
+<br/>
+- An example of an environment with 200 states
 
+|0|0|0|
+|---|---|---|
+|1|1|1|
+|2|2|2|
+
+- An example of an environment with 7200 states
+
+|0|0|0|
+|---|---|---|
+|1|2|3|
+|4|5|6|
+<br/>
+
+- When the total number of states increases, the proportion of terminal states decreases
+
+- Therefore, it is expected that the ratio of terminal states will be very small in an environment where the total number of states is larger
+
+- For this reason, a sparse reward problem arises in which rewards are not received in a complex environment
 
 
 
